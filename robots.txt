@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ayushikeshri-22.github.io/Education-Website/sitemap.xml
