@@ -22,9 +22,9 @@ jobs:
         run: |
           npx sitemap-generator-cli https://ayushikeshri-22.github.io/Education-Website/ --output sitemap.xml
 
-      # - name: Modify Sitemap to Add `<id>` Tag
-      #   run: |
-      #     sed -i 's|</url>|<id>12345</id></url>|g' sitemap.xml
+      - name: Modify Sitemap to Add `<id>` Tag
+        run: |
+          sed -i 's|</url>|<id>12345</id></url>|g' sitemap.xml
 
       - name: Commit and Push Sitemap
         run: |
