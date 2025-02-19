@@ -1,0 +1,35 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Sitemap Generator
+        run: |
+          npm install -g sitemap-generator-cli
+          echo "export PATH=$(npm root -g)/.bin:$PATH" >> $GITHUB_ENV
+
+      - name: Generate Sitemap
+        run: |
+          npx sitemap-generator-cli https://ayushikeshri-22.github.io/AI-Resume-Analyzer/ --output sitemap.xml
+
+      - name: Modify Sitemap to Add `<id>` Tag
+        run: |
+          sed -i 's|</url>|<id>12345</id></url>|g' sitemap.xml
+
+      - name: Commit and Push Sitemap
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          git add sitemap.xml
+          git commit -m "Auto-generate sitemap with ID tag" || echo "No changes to commit"
+          git push
