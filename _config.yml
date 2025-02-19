@@ -1,0 +1,6 @@
+defaults:
+  - scope:
+      path: ""
+    values:
+      seo:
+        google_site_verification: "WQl19U2RSt8Zii-LIO1xxBQRG6A3XIhoZcAD6zRam1o"
