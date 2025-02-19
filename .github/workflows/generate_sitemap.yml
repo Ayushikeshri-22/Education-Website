@@ -20,7 +20,7 @@ jobs:
 
       - name: Generate Sitemap
         run: |
-          npx sitemap-generator-cli https://ayushikeshri-22.github.io/AI-Resume-Analyzer/ --output sitemap.xml
+          npx sitemap-generator-cli https://ayushikeshri-22.github.io/Education-Website/ --output sitemap.xml
 
       - name: Modify Sitemap to Add `<id>` Tag
         run: |
