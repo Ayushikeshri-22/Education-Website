@@ -18,13 +18,30 @@ jobs:
           npm install -g sitemap-generator-cli
           echo "export PATH=$(npm root -g)/.bin:$PATH" >> $GITHUB_ENV
 
-      - name: Generate Sitemap
-        run: |
-          npx sitemap-generator-cli https://ayushikeshri-22.github.io/Education-Website/ --output sitemap.xml
+      # - name: Generate Sitemap
+      #   run: |
+      #     npx sitemap-generator-cli https://ayushikeshri-22.github.io/Education-Website/ --output sitemap.xml
 
-      - name: Modify Sitemap to Add `<id>` Tag
+      # - name: Modify Sitemap to Add `<id>` Tag
+      #   run: |
+      #     sed -i 's|</url>|<id>12345</id></url>|g' sitemap.xml
+
+      - name: Create Sitemap
         run: |
-          sed -i 's|</url>|<id>12345</id></url>|g' sitemap.xml
+              cat <<EOF > sitemap.xml
+                <?xml version="1.0" encoding="UTF-8"?>
+                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                  <url>
+                    <loc>https://www.google.com</loc>
+                    <id>1234</id>
+                  </url>
+                  <url>
+                    <loc>https://www.amazon.com</loc>
+                    <id>2345</id>
+                  </url>
+                </urlset>
+                EOF
+
 
       - name: Commit and Push Sitemap
         run: |
