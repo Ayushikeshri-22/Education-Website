@@ -28,20 +28,17 @@ jobs:
 
       - name: Create Sitemap
         run: |
-              cat <<EOF > sitemap.xml
-                <?xml version="1.0" encoding="UTF-8"?>
-                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-                  <url>
-                    <loc>https://www.google.com</loc>
-                    <id>1234</id>
-                  </url>
-                  <url>
-                    <loc>https://www.amazon.com</loc>
-                    <id>2345</id>
-                  </url>
-                </urlset>
-                EOF
-
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+          echo '  <url>' >> sitemap.xml
+          echo '    <loc>https://www.google.com</loc>' >> sitemap.xml
+          echo '    <id>1234</id>' >> sitemap.xml
+          echo '  </url>' >> sitemap.xml
+          echo '  <url>' >> sitemap.xml
+          echo '    <loc>https://www.amazon.com</loc>' >> sitemap.xml
+          echo '    <id>2345</id>' >> sitemap.xml
+          echo '  </url>' >> sitemap.xml
+          echo '</urlset>' >> sitemap.xml
 
       - name: Commit and Push Sitemap
         run: |
